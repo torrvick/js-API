@@ -41,7 +41,6 @@ function signUp(signingClassId, name) {
 	const classes = getClasses();
 	const currentParticipants = getCurrentParticipants(classes, signingClassId);
 	const maxParticipants = getMaxParticipants(classes, signingClassId);
-	console.log(maxParticipants);
 
 	// Сделал проверку на случай, если шаловливые ручки убирают атрибут hidden
 	if (currentParticipants.includes(name)) {
