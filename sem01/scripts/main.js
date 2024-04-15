@@ -1,4 +1,4 @@
-import { dataInitialize, getLoginUser, userLogOut, getClasses, signUp, signOut, userLogin } from './localStorage.js';
+import { dataInitialize, getLoginUser, userLogOut, getClasses, signUp, signOut } from './localStorage.js';
 
 dataInitialize();
 
