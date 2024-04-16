@@ -5,7 +5,7 @@ const classesKey = 'classes';
 
 function dataInitialize() {
 	if (!getClasses()) {
-		localStorage.setItem('classes', JSON.stringify(initialData));
+		localStorage.setItem(classesKey, JSON.stringify(initialData));
 	}
 }
 
