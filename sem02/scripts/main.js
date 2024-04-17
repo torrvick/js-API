@@ -15,7 +15,7 @@ allImages.forEach((imagePath, index) => {
 		'beforeend',
 		`
 			<div class="thumbnail" data-id="${index}">
-			<img src="${imagePath}" class="thumb-image"></img>
+			<img src="${imagePath}" class="thumb-image">
 			</div>
 		`
 	);
@@ -42,10 +42,6 @@ thumbnailsEl.addEventListener('click', ({ target }) => {
 
 function drawGaleryWith({ id, path }) {
 	imageEl.src = path;
-	setActiveThumbnail(id);
-}
-
-function setActiveThumbnail(id) {
 	const activeThumb = thumbnailsEl.querySelector('.active');
 	activeThumb?.classList.remove('active');
 	thumbnailsEl.querySelector(`[data-id="${id}"]`).classList.add('active');
