@@ -12,11 +12,8 @@
   max-width: 800px;
 }
 
-.galery {
-  position: relative;
-}
-
 .img-box {
+  position: relative;
   display: flex;
   justify-content: center;
   height: 80vh;
@@ -36,6 +33,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 8px;
 }
 .btn-box .btn {
   border: none;

@@ -16,11 +16,8 @@ $content-padding: 8px;
     max-width: $content-width;
 }
 
-.galery {
-    position: relative;
-}
-
 .img-box {
+    position: relative;
     display: flex;
     justify-content: center;
     height: 80vh;
@@ -40,6 +37,7 @@ $content-padding: 8px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: $content-padding;
     .btn {
         border: none;
         background-color: inherit;
