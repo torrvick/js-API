@@ -1,0 +1,165 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+  background-color: #dddddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+.root {
+  position: relative;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 93dvh;
+  width: 90vw;
+  max-width: 900px;
+}
+
+.image-container {
+  position: relative;
+  height: 93%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-container .list-buttons {
+  position: absolute;
+  align-self: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  pointer-events: none;
+}
+.image-container .list-buttons[disabled] {
+  visibility: hidden;
+  cursor: default;
+}
+.image-container .button {
+  pointer-events: all;
+  border: 1px solid #a09f9f;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  color: #a09f9f;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+.image-container .button:hover {
+  background-color: rgb(255, 255, 255);
+}
+.image-container .author {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  background: #ffffff;
+  padding: 7px;
+  font-style: italic;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.image:not([src]) {
+  display: none;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.controls .button {
+  border: none;
+  cursor: pointer;
+}
+.controls .like-box {
+  display: flex;
+  align-items: center;
+}
+
+.rand-next,
+.mode {
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.rand-next[data-mode=random]::before,
+.mode[data-mode=random]::before {
+  content: "Показать избранные";
+}
+.rand-next[data-mode=favourites]::before,
+.mode[data-mode=favourites]::before {
+  content: "Показать случайные";
+}
+.rand-next:hover,
+.mode:hover {
+  background-color: #0056b3;
+}
+
+.like {
+  background-color: transparent;
+  font-family: "Font Awesome 5 free";
+  font-size: 32px;
+  margin-right: 5px;
+}
+.like .fa-solid {
+  color: #ff4757;
+  display: none;
+}
+.like:hover .fa-solid, .like.setted .fa-solid {
+  display: inline;
+}
+.like:hover .fa-regular, .like.setted .fa-regular {
+  display: none;
+}
+.like[disabled] {
+  visibility: hidden;
+  cursor: default;
+}
+.like[disabled] + span {
+  visibility: hidden;
+}
+
+.status-box {
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 20px;
+}
+.status-box.error {
+  visibility: visible;
+  color: red;
+}
+.status-box.success {
+  visibility: visible;
+  color: green;
+}/*# sourceMappingURL=style.css.map */

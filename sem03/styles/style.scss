@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+// @import url("https://use.fontawesome.com/releases/v6.5.2/css/all.css");
+
+$content-width: 900px;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+    background-color: #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+.root {
+    position: relative;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 93dvh;
+    width: 90vw;
+    max-width: $content-width;
+}
+
+.image-container {
+    position: relative;
+    height: 93%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .list-buttons {
+        position: absolute;
+        align-self: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        pointer-events: none;
+        &[disabled] {
+            visibility: hidden;
+            cursor: default;
+        }
+    }
+    .button {
+        pointer-events: all;
+        border: 1px solid #a09f9f;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        color: #a09f9f;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    }
+    .author {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        border-radius: 5px;
+        background: #ffffff;
+        padding: 7px;
+        font-style: italic;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    &:not([src]) {
+        display: none;
+    }
+}
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .button {
+        border: none;
+        cursor: pointer;
+    }
+    .like-box {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.rand-next,
+.mode {
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    &[data-mode="random"]::before {
+        content: "Показать избранные";
+    }
+    &[data-mode="favourites"]::before {
+        content: "Показать случайные";
+    }
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+.like {
+    background-color: transparent;
+    font-family: "Font Awesome 5 free";
+    font-size: 32px;
+    margin-right: 5px;
+    .fa-solid {
+        color: #ff4757;
+        display: none;
+    }
+    &:hover .fa-solid,
+    &.setted .fa-solid {
+        display: inline;
+    }
+    &:hover .fa-regular,
+    &.setted .fa-regular {
+        display: none;
+    }
+    &[disabled] {
+        visibility: hidden;
+        cursor: default;
+        & + span {
+            visibility: hidden;
+        }
+    }
+}
+
+.status-box {
+    visibility: hidden;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+    &.error {
+        visibility: visible;
+        color: red;
+    }
+    &.success {
+        visibility: visible;
+        color: green;
+    }
+}
