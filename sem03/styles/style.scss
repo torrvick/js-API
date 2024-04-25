@@ -129,14 +129,22 @@ body {
         color: #ff4757;
         display: none;
     }
-    &:hover .fa-solid,
-    &.setted .fa-solid {
-        display: inline;
+
+    &:hover {
+        .fa-regular {
+            color: #ff4757;
+            text-shadow: 0px 0px 3px #ff4757;
+        }
     }
-    &:hover .fa-regular,
-    &.setted .fa-regular {
-        display: none;
+    &.setted {
+        .fa-regular {
+            display: none;
+        }
+        .fa-solid {
+            display: inline;
+        }
     }
+
     &[disabled] {
         visibility: hidden;
         cursor: default;

@@ -30,7 +30,6 @@ function getFavouritesNext() {
 
 function getHistoryPrevious() {
 	const history = getHistory();
-	console.log(currentHistoryIndex);
 
 	if (currentHistoryIndex === 0) {
 		return history[currentHistoryIndex];

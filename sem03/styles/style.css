@@ -131,11 +131,15 @@ body {
   color: #ff4757;
   display: none;
 }
-.like:hover .fa-solid, .like.setted .fa-solid {
-  display: inline;
+.like:hover .fa-regular {
+  color: #ff4757;
+  text-shadow: 0px 0px 3px #ff4757;
 }
-.like:hover .fa-regular, .like.setted .fa-regular {
+.like.setted .fa-regular {
   display: none;
+}
+.like.setted .fa-solid {
+  display: inline;
 }
 .like[disabled] {
   visibility: hidden;

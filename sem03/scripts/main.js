@@ -9,6 +9,7 @@ import {
 	getFavouritesPrevious,
 	getHistoryPrevious,
 	getHistoryNext,
+	saveToHistory,
 } from './localStorage.js';
 
 const rootEl = document.querySelector('.root');
@@ -43,9 +44,9 @@ const listBtns = imageContainerEl.querySelector('.list-buttons');
 const imageEl = imageContainerEl.querySelector('.image');
 const authorEl = imageContainerEl.querySelector('.author');
 
-let currentImage = {};
+let image = {};
 
-document.addEventListener('DOMContentLoaded', renderImageFrom(getRandomImage()));
+document.addEventListener('DOMContentLoaded', renderServerImage());
 
 listBtns.addEventListener('click', function ({ target }) {
 	const currentMode = modeBtn.dataset.mode;
@@ -63,7 +64,7 @@ listBtns.addEventListener('click', function ({ target }) {
 			if (nextImage) {
 				renderImageFrom(nextImage);
 			} else {
-				renderImageFrom(getRandomImage());
+				renderServerImage();
 			}
 		}
 		if (currentMode === 'favourites') {
@@ -76,12 +77,12 @@ likeBtn.addEventListener('click', function () {
 	let likesCount = Number(controlsEl.querySelector('.likes-count').textContent);
 
 	if (!this.classList.contains('setted')) {
-		setLike(currentImage);
+		setLike(image);
 		likeBtn.classList.add('setted');
 		controlsEl.querySelector('.likes-count').textContent = ++likesCount;
 		showMessage('success', 'Добавлена в избранное');
 	} else {
-		unsetLike(currentImage);
+		unsetLike(image);
 		likeBtn.classList.remove('setted');
 		controlsEl.querySelector('.likes-count').textContent = --likesCount;
 		showMessage('success', 'Удалена из избранного');
@@ -98,26 +99,26 @@ modeBtn.addEventListener('click', function () {
 		renderImageFrom(getFavouritesFirst());
 	} else if (this.dataset.mode === 'favourites') {
 		this.dataset.mode = 'random';
-		renderImageFrom(getRandomImage());
+		renderServerImage();
 	}
 });
 
-async function renderImageFrom(imageSource) {
+function renderImageFrom(imageSource) {
 	try {
 		imageEl.src = '';
 		likeBtn.classList.remove('setted');
 		likeBtn.disabled = true;
 		authorEl.textContent = '';
 
-		currentImage = await imageSource;
+		const image = imageSource;
 
-		imageEl.src = currentImage.urls.regular;
-		authorEl.textContent = currentImage.user.name;
-		controlsEl.querySelector('.likes-count').textContent = currentImage.likes;
+		imageEl.src = image.urls.regular;
+		authorEl.textContent = image.user.name;
+		controlsEl.querySelector('.likes-count').textContent = image.likes;
 
 		likeBtn.disabled = false;
 
-		if (isLiked(currentImage)) {
+		if (isLiked(image)) {
 			likeBtn.classList.add('setted');
 		}
 	} catch (err) {
@@ -125,6 +126,12 @@ async function renderImageFrom(imageSource) {
 		authorEl.textContent = '';
 		showMessage('error', err.message);
 	}
+}
+
+async function renderServerImage() {
+	const image = await getRandomImage();
+	saveToHistory(image);
+	renderImageFrom(image);
 }
 
 function showMessage(type, message) {
