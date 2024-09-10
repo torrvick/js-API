@@ -110,7 +110,7 @@ function renderImageFrom(imageSource) {
 		likeBtn.disabled = true;
 		authorEl.textContent = '';
 
-		const image = imageSource;
+		image = imageSource;
 
 		imageEl.src = image.urls.regular;
 		authorEl.textContent = image.user.name;
@@ -129,7 +129,7 @@ function renderImageFrom(imageSource) {
 }
 
 async function renderServerImage() {
-	const image = await getRandomImage();
+	image = await getRandomImage();
 	saveToHistory(image);
 	renderImageFrom(image);
 }
